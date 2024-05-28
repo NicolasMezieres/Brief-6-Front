@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link rel="stylesheet" href="stylesheet/logo.css" />
+  </head>
+  <body>
+    <header
+      class="relative flex items-center justify-between bg-purple-700 px-16 pb-4 duration-300 sm:flex-row"
+    >
+      <h1
+        class="logo italic font-bold text-gray-900 duration-500 text-5xl z-10 md:text-7xl"
+      >
+        Pictochat
+      </h1>
+      <p
+        class="relative inline-flex items-center justify-center p-0.5 mt-4 overflow-hidden font-medium text-gray-900 z-10 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800"
+      >
+        <a
+          href="../login/login.html"
+          class="relative px-5 py-2.5 text-sm transition-all ease-in duration-150 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0 duration-300 md:text-lg"
+        >
+          Se connecter
+        </a>
+      </p>
+    </header>
+    <main
+      class="flex min-h-full flex-col justify-center px-4 py-8 duration-500 xl:bg-blue-300"
+    >
+      <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+        <h2
+          class="text-center text-4xl font-bold leading-9 tracking-tight text-gray-900"
+        >
+          Inscription
+        </h2>
+      </div>
+      <div
+        class="flex justify-center bg-blue-300 rounded-3xl mt-4 mx-auto w-full max-w-sm lg:max-w-lg xl:bg-transparent duration-500"
+      >
+        <form
+          class="max-w-sm w-full text-sm md:text-lg flex flex-col mt-4 items-center text-center space-y-8 px-8"
+        >
+          <!--firstName-->
+          <div class="w-full">
+            <label class="block font-bold leading-6 text-gray-900"
+              >Prénom</label
+            >
+            <p class="textErrorFirstName font-bold text-red-600"></p>
+            <div class="mt-2">
+              <input
+                type="text"
+                placeholder="Insérer votre prénom ici ..."
+                oninput="verifInput(patternName,firstName,firstNameTextError,'prénom',isError)"
+                required
+                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset text-center focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-1 firstName"
+              />
+            </div>
+          </div>
+          <!--lastName-->
+          <div class="w-full">
+            <label class="block font-bold leading-6 text-gray-900">Nom</label>
+            <p class="textErrorLastName font-bold text-red-600"></p>
+            <div class="mt-2">
+              <input
+                type="text"
+                placeholder="Insérer votre nom ici ..."
+                required
+                oninput="verifInput(patternName,lastName,lastNameTextError,'prénom',isError)"
+                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset text-center focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3 lastName"
+              />
+            </div>
+          </div>
+          <!--Username-->
+          <div class="w-full">
+            <div>
+              <label class="block font-bold leading-6 text-gray-900"
+                >Username</label
+              >
+            </div>
+            <p class="textErrorUserName font-bold text-red-600"></p>
+            <div class="mt-2 text-center">
+              <input
+                type="text"
+                required
+                placeholder="Insérer un username ici ..."
+                oninput="verifInput(patternUserName,username,usernameTextError,'username',isError)"
+                class="block w-full text-center rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3 username"
+              />
+            </div>
+          </div>
+          <!--Email-->
+          <div class="w-full">
+            <div>
+              <label class="block font-bold leading-6 text-gray-900"
+                >email</label
+              >
+            </div>
+            <p class="textErrorEmail font-bold text-red-600"></p>
+            <div class="mt-2 text-center">
+              <input
+                type="text"
+                required
+                placeholder="Insérer votre email ici ..."
+                oninput="verifInput(patternMail,email,emailTextError,'email',isError)"
+                class="block w-full text-center rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3 email"
+              />
+            </div>
+          </div>
+          <!--picture-->
+          <div class="w-full">
+            <div>
+              <label class="block font-bold leading-6 text-gray-900"
+                >Image</label
+              >
+            </div>
+            <p class="textErrorImage font-bold text-red-600"></p>
+            <div class="mt-2">
+              <input
+                type="file"
+                required
+                class="block w-full rounded-md border-0 py-1.5 text-gray-900 bg-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3 image"
+              />
+            </div>
+          </div>
+          <!--Password-->
+          <div class="w-full">
+            <label class="block font-bold leading-6 text-gray-900"
+              >Mot de passe</label
+            >
+            <p class="textErrorPassword font-bold text-red-600"></p>
+            <div class="mt-2">
+              <input
+                type="password"
+                required
+                placeholder="Insérer votre mot de passe ici ..."
+                oninput="verifInput(patternPass,password,passwordTextError,'prénom',isError)"
+                class="block w-full text-center rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3 password"
+              />
+            </div>
+          </div>
+          <!--Confirm password-->
+          <div class="w-full">
+            <label class="block text-center font-bold leading-6 text-gray-900"
+              >Confirmer le mot de passe</label
+            >
+            <p class="textErrorConfirmPassword font-bold text-red-600"></p>
+            <div class="mt-2">
+              <input
+                type="password"
+                required
+                placeholder="Confirmer votre mot de passe..."
+                class="block w-full text-center rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3 confirmPassword"
+              />
+            </div>
+          </div>
+          <!--Terms-->
+          <div class="flex flex-col items-center mb-4">
+            <p class="textErrorCheckbox font-bold mb-4 text-red-600"></p>
+            <div class="flex items-center mb-4">
+              <input
+                id="default-checkbox"
+                type="checkbox"
+                class="block w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-3xl focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 checkbox"
+              />
+              <label
+                for="default-checkbox"
+                class="ms-2 text-sm select-none font-medium"
+                >Accepter les Termes et Conditions</label
+              >
+            </div>
+          </div>
+          <!--button & Login-->
+          <div class="flex flex-col items-center gap-8">
+            <p class="textError text-red-600"></p>
+            <button
+              class="flex w-full justify-center max-w-24 rounded-md bg-black duration-300 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 button"
+              onclick="handleRegister(event)"
+            >
+              S'inscrire
+            </button>
+            <!--Login-->
+            <div class="mb-4">
+              <a
+                href="../login/login.html"
+                class="mt-2 text-yellow-600 underline font-bold duration-300 hover:text-red-600"
+                >Vous êtes déja inscrit ?</a
+              >
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
+    <footer class="w-full bg-sky-700 text-center text-xl font-bold py-6">
+      Copyright 2024
+    </footer>
+  </body>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="./js/register.js"></script>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Acceuil</title>
+    <link rel="stylesheet" href="../auth/register/stylesheet/logo.css" />
+    <link rel="stylesheet" href="../auth/login/stylesheet/modal.css" />
+    <link rel="stylesheet" href="./stylesheet/animations.css" />
+  </head>
+  <body>
+    <header class="">
+      <div
+        class="fixed flex flex-col items-center z-10 justify-between bg-purple-700 px-16 pb-4 duration-300 sm:flex-row w-full"
+      >
+        <h1
+          class="logo italic font-bold text-gray-900 duration-500 text-3xl z-10 lg:text-7xl"
+        >
+          Pictochat
+        </h1>
+        <div class="flex mt-6 flex-col justify-center items-center lg:flex-row">
+          <div class="w-full flex justify-center items-center">
+            <button
+              onclick="getPost()"
+              class="relative inline-flex items-center justify-center p-0.5 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-200 via-red-300 to-yellow-200 group-hover:from-red-200 group-hover:via-red-300 group-hover:to-yellow-200 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400"
+            >
+              <span
+                class="relative inline-block p-1 lg:px-5 lg:py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
+              >
+                Acceuil
+              </span>
+            </button>
+            <button
+              onclick="window.location.href='./userList/userList.html'"
+              class="relative inline-flex items-center justify-center p-0.5 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-200 via-red-300 to-yellow-200 group-hover:from-red-200 group-hover:via-red-300 group-hover:to-yellow-200 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400"
+            >
+              <span
+                class="relative p-1 lg:px-5 lg:py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
+              >
+                Liste Utilisateur
+              </span>
+            </button>
+          </div>
+        </div>
+        <div class="mt-6">
+          <form>
+            <div
+              class="relative flex w-full justify-center items-center lg:flex-row"
+            >
+              <input
+                type="search"
+                id="searchUser"
+                maxlength="21"
+                class="inline-block py-1.5 w-11/12 text-sm text-center text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 lg:text-md"
+                placeholder="Username"
+                required
+              />
+              <button
+                type="submit"
+                onclick="getUserByUsername()"
+                class="text-white inline-block right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Search
+              </button>
+            </div>
+          </form>
+        </div>
+        <div
+          class="profil cursor-pointer flex flex-col justify-center items-center"
+        >
+          <img
+            class="userPicture rounded-full maw-w-none w-12 mt-4 h-12 object-cover object-top"
+            alt="photo de profil"
+          />
+          <div
+            class="profil_burger opacity-0 absolute top-16 mt-1 rounded-3xl py-4 bg-black px-2 duration-500"
+          >
+            <div
+              class="text-white text-center font-bold py-1 duration-300 rounded-lg hover:bg-gray-800"
+            >
+              Profil
+            </div>
+            <div
+              onclick="getPost()"
+              class="text-white text-center font-bold py-1 duration-300 rounded-lg hover:bg-gray-800"
+            >
+              Acceuil
+            </div>
+            <div
+              onclick="getMyPost()"
+              class="text-white text-center font-bold py-1 duration-300 rounded-lg hover:bg-gray-800"
+            >
+              Mes posts
+            </div>
+            <div
+              onclick="myFollows()"
+              class="text-white text-center font-bold py-1 duration-300 rounded-lg hover:bg-gray-800"
+            >
+              Mes follows
+            </div>
+            <div
+              class="relative flex items-center justify-center overflow-hidden font-medium text-gray-900 z-10 rounded-lg bg-black hover:bg-gray-800 duration-300 logout"
+            >
+              <div
+                class="items-logout flex justify-center items-center w-4 relative left-4 top-px"
+              >
+                <i
+                  class="absolute fa-solid fa-right-from-bracket logoutIcon duration-300 fa-sm"
+                  style="color: #ffffff"
+                ></i>
+                <i
+                  class="absolute fa-solid fa-right-from-bracket fa-beat fa-sm logoutIconHover duration-300 opacity-0"
+                  style="color: #ffffff"
+                ></i>
+              </div>
+              <a
+                onclick="disconnected()"
+                href="../auth/login/login.html"
+                class="relative px-5 py-2.5 font-bold text-sm text-white transition-all ease-in duration-150 rounded-md duration-300 md:text-md"
+              >
+                Se déconnecter
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="pt-32">
+      <div class="addPost flex justify-center mt-4">
+        <button
+          onclick="afficheModalPost()"
+          class="addPost middle none center mr-4 rounded-lg bg-blue-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          data-ripple-light="true"
+        >
+          Ajouter un post
+        </button>
+      </div>
+      <div
+        class="items flex flex-col justify-center items-center py-8 min-h-screen"
+      >
+        <div
+          class="item flex w-11/12 bg-gray-200 py-4 my-4 rounded-3xl lg:w-8/12"
+        >
+          <div class="w-full flex flex-col rounded-xl px-8">
+            <div class="border border-b-gray-400">
+              <img
+                class="relative bottom-3 inline h-12 w-12 max-w-none object-cover object-top rounded-full"
+                src="media/didier.jpeg"
+                alt="photo de profil de didier"
+              />
+              <p class="username inline-block font-bold">
+                username<br /><span class="date">22/05/2024</span>
+              </p>
+            </div>
+            <div class="px-1 border border-b-gray-400">
+              <p class="title font-bold text-lg text-center pt-4">
+                titre bien long on verra comment ça rend
+              </p>
+              <div class="flex justify-center">
+                <img
+                  class="pt-4 max-w-10/12"
+                  src="media/nyan.jpg"
+                  alt="photo de chat"
+                />
+              </div>
+              <p class="text pt-4 text-center">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas
+                tenetur architecto fugit repudiandae numquam nesciunt dolore
+                exercitationem esse deleniti dignissimos.
+              </p>
+            </div>
+            <div class="interact flex pt-4">
+              <div class="comment border border-r-gray-400 px-4">
+                <p class="inline-block">14</p>
+                <i class="fa-regular fa-message cursor-pointer"></i>
+              </div>
+              <div class="like border border-r-gray-400 px-4">
+                <p class="inline-block">9</p>
+                <i class="fa-regular fa-thumbs-up cursor-pointer"></i>
+              </div>
+              <div class="dislike border border-r-gray-400 px-4">
+                <p class="inline-block">3</p>
+                <i class="fa-regular fa-thumbs-down cursor-pointer pt-1.5"></i>
+              </div>
+              <div
+                class="response underline px-4 cursor-pointer hover:text-red-500"
+              >
+                répondre
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="item flex flex-col items-center justify-center w-11/12 bg-gray-200 py-4 my-4 rounded-3xl lg:w-4/12"
+        >
+          <img
+            class="relative inline h-12 w-12 my-4 max-w-none object-cover object-top rounded-full"
+            src="media/didier.jpeg"
+            alt="photo de profil de l'utilisateur"
+          />
+          <p class="font-bold text-lg text-center">username</p>
+          <button
+            class="button text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-4 mb-2"
+          >
+            Suivre
+          </button>
+        </div>
+      </div>
+    </main>
+    <footer class="w-full bg-sky-700 text-center text-xl font-bold py-6">
+      Copyright 2024
+    </footer>
+    <div class="flex justify-center items-center">
+      <p
+        class="status z-50 fixed top-1/4 inset-x-auto w-52 p-2 rounded-3xl bg-red-800 text-white font-bold opacity-0 text-center duration-500"
+      ></p>
+    </div>
+    <div class="flex justify-center">
+      <div
+        class="modalPost hidden duration-500 w-screen min-h-screen top-0 z-40 fixed py-8 rounded-3xl lg:top-24 lg:min-h-3/5 lg:min-h-min flex flex-col items-center w-11/12 bg-gray-200 lg:my-4 rounded-3xl lg:w-8/12 gap-2"
+      >
+        <i
+          onclick="removeModal()"
+          class="absolute right-5 top-10 fa-solid fa-circle-xmark fa-2xl cursor-pointer"
+          style="color: #ff0000"
+        ></i>
+        <p class="text-bold text-md lg:text-lg">Créer un post</p>
+        <p class="text-bold text-md lg:text-lg pt-5">Titre</p>
+        <input
+          class="titlePost w-2/3 md:w-1/2 rounded-3xl py-2 text-center identifiantModal"
+          type="text"
+          placeholder="titre..."
+        />
+        <p class="block font-bold leading-6 text-gray-900 pt-8">Image</p>
+        <input
+          type="file"
+          class="imagePost block rounded-md md:w-1/3 lg:w-1/2 xl:w-1/3 border-0 py-1.5 text-gray-900 bg-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 indent-3 image"
+        />
+        <p class="block font-bold leading-6 text-gray-900 pt-8">texte</p>
+        <input
+          class="textPost w-2/3 md:w-1/2 rounded-3xl py-2 text-center identifiantModal"
+          type="text"
+          placeholder="texte..."
+        />
+        <p class="textError"></p>
+        <button
+          onclick="addPost()"
+          class="relative inline-flex mt-8 items-center justify-center p-0.5 mb-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800"
+        >
+          <span
+            class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
+          >
+            Publier votre post
+          </span>
+        </button>
+      </div>
+    </div>
+    <div onclick="removeModal()" id="overlay"></div>
+  </body>
+  <script
+    src="https://kit.fontawesome.com/5cab16f96f.js"
+    crossorigin="anonymous"
+  ></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/admin.js"></script>
+</html>

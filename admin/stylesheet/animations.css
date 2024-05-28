@@ -1,0 +1,26 @@
+.logout:hover{
+    .items-logout{
+        .logoutIcon{
+            opacity: 0;
+        }
+        .logoutIconHover{
+            opacity: 1;
+        }
+    }
+}
+.profil:hover{  
+    .profil_burger{
+        opacity: 1;
+        display: block;
+        position: absolute;
+    }
+}
+.before:hover, .next:hover{
+    .arrow{
+        opacity: 0;
+    }
+    .arrowHover{
+        opacity: 1;
+        display: block;
+    }
+}

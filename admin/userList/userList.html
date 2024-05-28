@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>userList</title>
+    <link rel="stylesheet" href="../stylesheet/animations.css" />
+    <link rel="stylesheet" href="../../auth/login/stylesheet/modal.css" />
+    <link rel="stylesheet" href="../../auth/register/stylesheet/logo.css" />
+    <link rel="stylesheet" href="./stylesheet/stylesheet.css" />
+  </head>
+  <body>
+    <header>
+      <div
+        class="fixed flex items-center z-10 justify-between bg-purple-700 px-16 pb-4 duration-300 sm:flex-row w-full"
+      >
+        <h1
+          class="logo italic font-bold text-gray-900 duration-500 text-5xl z-10 md:text-7xl"
+        >
+          Pictochat
+        </h1>
+        <div class="flex mt-6 flex-col justify-center items-center lg:flex-row">
+          <button
+            onclick="window.location.href='../admin.html'"
+            class="relative inline-flex items-center justify-center p-0.5 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-200 via-red-300 to-yellow-200 group-hover:from-red-200 group-hover:via-red-300 group-hover:to-yellow-200 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400"
+          >
+            <span
+              class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
+            >
+              Acceuil
+            </span>
+          </button>
+          <form>
+            <div
+              class="relative flex flex-col justify-center items-center mx-8 lg:flex-row"
+            >
+              <input
+                type="search"
+                id="searchUser"
+                maxlength="21"
+                class="inline-block py-1.5 w-11/12 text-sm text-center text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 lg:text-md"
+                placeholder="Username"
+                required
+              />
+              <button
+                type="submit"
+                onclick="getUserByUsername()"
+                class="text-white inline-block right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Search
+              </button>
+            </div>
+          </form>
+        </div>
+        <div
+          class="profil cursor-pointer flex flex-col justify-center items-center"
+        >
+          <img
+            class="userPicture rounded-full maw-w-none w-12 mt-4 h-12 object-cover object-top"
+            alt="photo de profil"
+          />
+          <div
+            class="profil_burger opacity-0 absolute top-16 mt-1 rounded-3xl py-4 bg-black px-2 duration-500"
+          >
+            <div
+              class="text-white text-center font-bold py-1 duration-300 rounded-lg hover:bg-gray-800"
+            >
+              Profil
+            </div>
+            <div
+              class="text-white text-center font-bold py-1 duration-300 rounded-lg hover:bg-gray-800"
+            >
+              Acceuil
+            </div>
+            <div
+              class="text-white text-center font-bold py-1 duration-300 rounded-lg hover:bg-gray-800"
+            >
+              Mes posts
+            </div>
+            <div
+              onclick="myFollows()"
+              class="text-white text-center font-bold py-1 duration-300 rounded-lg hover:bg-gray-800"
+            >
+              Mes follows
+            </div>
+            <div
+              class="relative flex items-center justify-center overflow-hidden font-medium text-gray-900 z-10 rounded-lg bg-black hover:bg-gray-800 duration-300 logout"
+            >
+              <div
+                class="items-logout flex justify-center items-center w-4 relative left-4 top-px"
+              >
+                <i
+                  class="absolute fa-solid fa-right-from-bracket logoutIcon duration-300 fa-sm"
+                  style="color: #ffffff"
+                ></i>
+                <i
+                  class="absolute fa-solid fa-right-from-bracket fa-beat fa-sm logoutIconHover duration-300 opacity-0"
+                  style="color: #ffffff"
+                ></i>
+              </div>
+              <a
+                onclick="disconnected()"
+                href="../../auth/login/login.html"
+                class="relative px-5 py-2.5 font-bold text-sm text-white transition-all ease-in duration-150 rounded-md duration-300 md:text-md"
+              >
+                Se déconnecter
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="pt-32">
+      <div
+        class="items flex flex-col justify-center items-center py-8 min-h-screen"
+      ></div>
+    </main>
+    <footer class="w-full bg-sky-700 text-center text-xl font-bold py-6">
+      Copyright 2024
+    </footer>
+    <div class="flex justify-center items-center">
+      <p
+        class="status z-50 fixed top-1/4 inset-x-auto w-52 p-2 rounded-3xl bg-red-800 text-white font-bold opacity-0 text-center duration-500"
+      ></p>
+    </div>
+  </body>
+  <script
+    src="https://kit.fontawesome.com/5cab16f96f.js"
+    crossorigin="anonymous"
+  ></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="./js/userList.js"></script>
+</html>
